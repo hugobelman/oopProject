@@ -24,6 +24,7 @@ class Image {
         void save(const char *filename);
 
     private:
+        // Helpers
         void decode(const char *filename);
 
         std::vector<Pixel> m_pixels;

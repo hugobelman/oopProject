@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include "processor.hpp"
 #include "image.hpp"
 #include "pixel.hpp"
 #include "grayScaleFilter.hpp"
@@ -8,15 +10,32 @@
 using namespace std;
 
 int main(int argc, char const *argv[])
-{
-    Image image("test.png");
-    NegativeFilter f;
+{  
+    const char *nameInputFile = nullptr;
+    const char *nameOutputFile = "output.png";
 
-    image.save("1.png");
+    for (int i = 1; i < argc; i++) {
+        if (strcmp(argv[i], "-i") == 0 && (i+1) < argc) nameInputFile = argv[i+1];
+        if (strcmp(argv[i], "-o") == 0 && (i+1) < argc) nameOutputFile = argv[i+1];
 
-    f.applyOn(image);
+        if (nameInputFile != nullptr && strcmp(nameOutputFile, "output.png") != 0) break;
+    }
 
-    image.save("2.png");
+    if (nameInputFile != nullptr) {
+        try {
+            Image image(nameInputFile);
+            
+            Processor processor(argv, argc);
+            processor.process(image);
+
+            image.save(nameOutputFile);
+        } catch (...) {
+            cout << "Archivo no valido" << endl;
+        }
+    } else {
+        cout << "Error: Falta archivo de entrada" << endl;
+    }
+
 
     return 0;
 }
