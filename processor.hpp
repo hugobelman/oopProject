@@ -15,6 +15,7 @@
 class Processor {
     public:
         Processor(const char *args[], int n);
+        ~Processor();
 
         void process(Image& image); 
     private:

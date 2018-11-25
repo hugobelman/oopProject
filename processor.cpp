@@ -17,6 +17,10 @@ Processor::Processor(const char *args[], int n) {
     }
 }
 
+Processor::~Processor() {
+   for (auto process : processes) delete process;
+}
+
 void Processor::process(Image& image) {
     for (auto process : processes) process->applyOn(image);
 }
