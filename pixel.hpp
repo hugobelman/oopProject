@@ -12,6 +12,9 @@ struct Pixel {
     Pixel(unsigned char gray);
     Pixel(unsigned char r, unsigned char g, unsigned char b);
     Pixel(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
+    
+    bool operator ==(Pixel b);
+    bool isCloseTo(Pixel color, unsigned radius);
 };
 
 #endif

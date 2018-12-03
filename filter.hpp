@@ -5,7 +5,8 @@
 
 class Filter : public ImageProcessor {
     public:
-        Filter() {}
+        Filter();
+
         void applyOn(Image& image) override;
     protected:
         virtual void processPixel(Pixel& pixel) = 0;

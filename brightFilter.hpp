@@ -5,11 +5,12 @@
 
 class BrightFilter : public Filter {
     public:
-        BrightFilter(int plusBright) : m_plusBright(plusBright) { }
+        BrightFilter(int brightScale);
 
         void processPixel(Pixel& pixel);
     private:
-        int m_plusBright;
+        // Luz que se debe aplicar en cada pixel
+        int m_brightness;
 };
 
 #endif

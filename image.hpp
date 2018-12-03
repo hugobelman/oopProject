@@ -1,23 +1,21 @@
 #ifndef IMAGE_HPP
 #define IMAGE_HPP
 
+#include <GL/glut.h>
 #include <vector>
 #include "pixel.hpp"
 #include "libraries/lodepng.h"
 
 class Image {
     public:
-        Image();
         Image(const char *filename);
 
         // Getters
         unsigned width() const;
         unsigned height() const;
-        const Pixel& at(int x, int y) const;
         const Pixel& operator()(int x, int y) const; 
 
         // Setters
-        Pixel& at(int x, int y);
         Pixel& operator()(int x, int y);
 
         // Interface

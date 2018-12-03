@@ -1,7 +1,6 @@
 #ifndef BLACKANDWHITEFILTER_HPP
 #define BLACKANDWHITEFILTER_HPP
 
-#include "imageProcessor.hpp"
 #include "grayScaleFilter.hpp"
 #include "pixel.hpp"
 #include "filter.hpp"
@@ -12,7 +11,8 @@ class BlackAndWhiteFilter : public Filter {
 
         void processPixel(Pixel& pixel);
     private:
-        unsigned m_blackFactor = 127.5;
+        // A partir de que valor se concidera un pixel negro
+        const unsigned m_blackFactor = 127.5;
 };
 
 #endif

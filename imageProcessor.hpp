@@ -8,6 +8,7 @@ class ImageProcessor {
         ImageProcessor();
         virtual ~ImageProcessor() { }
 
+        // Interface
         virtual void applyOn(Image& image) = 0;
 };
 

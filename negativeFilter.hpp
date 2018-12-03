@@ -1,7 +1,6 @@
 #ifndef NEGATIVEFILTER_HPP
 #define NEGATIVEFILTER_HPP
 
-#include "imageProcessor.hpp"
 #include "filter.hpp"
 
 class NegativeFilter : public Filter {
@@ -10,7 +9,8 @@ class NegativeFilter : public Filter {
 
         void processPixel(Pixel& pixel) override;
     private:
-        unsigned m_inverseFactor = 255; 
+        // Valor maximo de color de un pixel
+        const unsigned m_inverseFactor = 255; 
 };
 
 #endif

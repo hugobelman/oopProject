@@ -8,6 +8,7 @@ class GrayScaleFilter : public Filter {
     public:
         GrayScaleFilter() { }
 
+        // Metodo necesario para la clase Filter
         void processPixel(Pixel& pixel) override;
 };
 

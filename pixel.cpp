@@ -24,6 +24,22 @@ Pixel::Pixel(Color colorName) {
     }
 }
 
+bool Pixel::operator ==(Pixel b) {
+    return (this->r == b.r && this->g == b.g && this->b == b.b);
+}
+
+// Metodo que evalua si un cierto pixel se parece a otro en base a un radio
+bool Pixel::isCloseTo(Pixel color, unsigned radius) {
+    int positiveLimit = color.r + radius;
+    int negativeLimit = color.r - radius;
+
+    if (!(this->r <= positiveLimit && this->r >= negativeLimit)) return false;
+    if (!(this->g <= positiveLimit && this->g >= negativeLimit)) return false;
+    if (!(this->b <= positiveLimit && this->b >= negativeLimit)) return false;
+
+    return true;
+}
+
 Pixel::Pixel(unsigned char gray) : r(gray), g(gray), b(gray), a(0xFF) {}
 
 Pixel::Pixel(unsigned char r, unsigned char g, unsigned char b) : r(r), g(g), b(b), a(0xFF) {}

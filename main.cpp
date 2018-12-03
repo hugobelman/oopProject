@@ -2,18 +2,17 @@
 #include <string>
 #include "processor.hpp"
 #include "image.hpp"
-#include "pixel.hpp"
-#include "grayScaleFilter.hpp"
-#include "negativeFilter.hpp"
-#include "blackAndWhiteFilter.hpp"
 
 using namespace std;
+
+void printInfo();
 
 int main(int argc, char const *argv[])
 {  
     const char *nameInputFile = nullptr;
     const char *nameOutputFile = "output.png";
 
+    // Busca y almacena los nombres de archivo de entrada y salida
     for (int i = 1; i < argc; i++) {
         if (strcmp(argv[i], "-i") == 0 && (i+1) < argc) nameInputFile = argv[i+1];
         if (strcmp(argv[i], "-o") == 0 && (i+1) < argc) nameOutputFile = argv[i+1];
@@ -30,12 +29,25 @@ int main(int argc, char const *argv[])
 
             image.save(nameOutputFile);
         } catch (...) {
-            cout << "Archivo no valido" << endl;
+            printInfo();
         }
     } else {
-        cout << "Error: Falta archivo de entrada" << endl;
+        printInfo();
     }
 
-
     return 0;
+}
+
+void printInfo() {
+    cout << "Procesador de imagenes v0.1a" << endl << endl;
+    cout << "main [-i inputFile] [-o outputFile] [filters] [operations]" << endl << endl;
+    cout << "Filtros:" << endl;
+    cout << "-gs\t Escala de grises" << endl;
+    cout << "-bw\t Blanco y negro" << endl;
+    cout << "-n\t Negativo" << endl << endl;;
+
+    cout << "Operaciones:" << endl;
+    cout << "[-b -10 a 10]\tModifica el brillo" << endl;
+    cout << "[-rb 0 a 255] \tRemueve el fondo blanco" << endl;
+    cout << "[-t  0 a 255]\tRemueve el color blanco" << endl;
 }
